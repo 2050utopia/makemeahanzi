@@ -4,6 +4,8 @@
 
 ### [New: Inkstone Chinese writing app](https://www.skishore.me/inkstone/)
 
+### [New: No more cut-off strokes (due to @chanind)!](https://github.com/skishore/makemeahanzi/pull/32)
+
 Make Me a Hanzi provides dictionary and graphical data for over 9000 of the
 most common simplified and traditional Chinese characters. Among other things,
 this data includes stroke-order vector graphics for all these characters. You
@@ -135,14 +137,12 @@ rely on the fact that the two files will always come in the same order.
 
 ### TODOs and Future Work
 
-- Right now, all stroke order information is based on the People's Republic
-  of China (PRC) stroke order. Some characters are written with different
-  stroke orders in Japan, Taiwan, and elsewhere. We should build data for
-  these orders as well.
-
 - As an experimental next step, we have produced an animated SVG image for
-  each character that we have data for (see the svgs directory). It's easy to
-  It's easy to embed these SVGs in a website. A minimal example is as follows:
+  each character that we have data for (see the svgs directory). The SVGs are
+  named by the Unicode codepoint of the character they correspond to.
+  Using Javascript, you can find the codepoint of a character `x` by calling
+  `x.charCodeAt(0)`. It's easy to embed these SVGs in a website. A minimal
+  example is as follows:
 
       <body><embed src="31119.svg" width="200px" height="200px"/></body>
 
@@ -152,5 +152,25 @@ rely on the fact that the two files will always come in the same order.
   when the first is complete. However, the images are still the easiest way
   to make use of this data..
 
-These TODOs will be addressed based on prospective clients' needs, so if you
-want something done, please let me know!
+There are quite a few clients using the Make Me a Hanzi data. Many of them
+have had to do additional preprocessing of it for their use case. If you might
+find this data useful, please feel free to contact me by email - I may be able
+to give tips or suggest algorithms for making use of it.
+
+### Related projects
+
+- This project is focused on building stroke order diagrams that follow the
+  People's Republic of China (PRC) stroke order. Some characters are written
+  with different stroke orders in Japan, Taiwan, and elsewhere. I don't have
+  the time or knowledge to produce similar data for those orderings, but
+  there are other resources that you can try:
+
+    - parsimohni's animCJK project provides Japanese stroke order data: [GitHub](https://github.com/parsimonhi/animCJK) and [Demo](http://gooo.free.fr/animCJK/official/)
+    - KanjiVG also has Japanese stroke order data, and isn't based on Arphic's font: [Website](http://kanjivg.tagaini.net/)
+    - chanind's Hanzi Writer Javascript library supports animations and writing practice: [Website](https://chanind.github.io/hanzi-writer/)
+
+- There are also some apps and websites that use this data:
+
+    - gugray maintains HanDeDict, a Chinese-German dictionary that uses these animations: [GitHub](https://github.com/gugray/HanDeDict/) and [Website](https://handedict.zydeo.net/de)
+    - meshonline wrote a free iOS app for learning Chinese characters using this data: [GitHub](https://github.com/meshonline/Hanzi) and [App Store](https://itunes.apple.com/us/app/%E7%B9%81%E4%BD%93%E5%AD%97%E5%B8%96/id1333520855?l=zh&ls=1&mt=8)
+    - embermitre uses Make Me a Hanzi animations in Hanping Chinese Dictionary: [Lite version](https://play.google.com/store/apps/details?id=com.embermitre.hanping.app.lite) and [Pro version](https://play.google.com/store/apps/details?id=com.embermitre.hanping.app.pro)
